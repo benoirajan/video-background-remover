@@ -1,0 +1,20 @@
+# Python environment
+venv/
+__pycache__/
+*.pyc
+
+# Heavy video outputs and inputs
+output/
+*.mp4
+*.mkv
+*.mov
+*.avi
+
+# Neural network weights (auto-downloaded by setup.sh / process_video.py)
+models/*.onnx
+!models/.gitkeep
+
+# OS / Editor files
+.DS_Store
+.idea/
+.vscode/
