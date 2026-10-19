@@ -8,33 +8,37 @@ This project provides an automated, professional background removal and matting 
 
 ```text
 /home/benoi/Videos/matting_project/
-├── models/
-│   └── rvm_mobilenetv3_fp32.onnx   # Pre-trained RVM neural network (~15 MB)
-├── venv/                           # Isolated Python environment (ONNX + OpenCV)
-├── output/                         # Processed video outputs & previews
+├── models/                         # Auto-downloaded model weights (.onnx)
+├── requirements.txt                # CPU dependencies
+├── requirements-gpu.txt            # GPU dependencies (NVIDIA CUDA)
+├── setup.sh                        # Universal 1-click plug-and-play installer
 ├── process_video.py                # Main matting & video muxing script
 ├── run.sh                          # Easy executable runner script
-└── README.md                       # This documentation
+├── VIDEO_SHOOTING_AND_SETUP_GUIDE.md # Studio shooting best practices & deployment guide
+├── Dockerfile                      # Optional GPU container deployment
+└── README.md                       # Documentation
 ```
+
+> 📖 **Full Studio & Filming Guide:** See [VIDEO_SHOOTING_AND_SETUP_GUIDE.md](file:///home/benoi/Videos/matting_project/VIDEO_SHOOTING_AND_SETUP_GUIDE.md) for full camera setup rules, lighting techniques, and cloud deployment steps.
 
 ---
 
-## 🚀 How to Run the Matting Pipeline
+## ⚡ Plug-and-Play Quickstart (Any Server / Cloud VM)
 
-### 1. Simple Command (Using `run.sh`)
-
-Open your terminal, navigate to the folder, and run:
+Whenever you clone this repository onto a new machine (Local, AWS, GCP, RunPod, Google Colab):
 
 ```bash
-cd /home/benoi/Videos/matting_project
-./run.sh /home/benoi/Videos/VID_20261017_210103472.mp4
+git clone <your-repo-url>
+cd matting_project
+
+# 1. Run the auto-installer (detects NVIDIA GPU vs CPU automatically)
+./setup.sh
+
+# 2. Run video matting!
+./run.sh path/to/your_video.mp4
 ```
 
-Or using the full Python virtual environment path directly from anywhere:
-
-```bash
-/home/benoi/Videos/matting_project/venv/bin/python3 /home/benoi/Videos/matting_project/process_video.py /home/benoi/Videos/VID_20261017_210103472.mp4
-```
+> **Note:** Even if you skip `./setup.sh` and run `./run.sh` directly, the runner detects that the environment is missing and automatically initializes everything for you!
 
 ---
 
